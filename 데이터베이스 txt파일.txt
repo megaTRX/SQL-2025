@@ -1,0 +1,15 @@
+-- 1. 기본 테이블 생성 (a 컬럼만 PK로 지정)
+CREATE TABLE aaa (
+    a INT PRIMARY KEY,
+    b INT,
+    c INT,
+    d INT
+);
+
+-- 2. 나머지 인덱스 추가
+ALTER TABLE aaa ADD UNIQUE INDEX idx_b (b); -- (Key_name: idx_b, Non_unique: 0)
+ALTER TABLE aaa ADD INDEX idx_c (c);        -- (Key_name: idx_c, Non_unique: 1)
+ALTER TABLE aaa ADD INDEX d (d);            -- (Key_name: d, Non_unique: 1)
+
+show index from aaa;
+
